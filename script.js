@@ -11,7 +11,7 @@ planets = {
 };
 
 
-function PlanetAgeName(planetName, age) {
+module.exports = function PlanetAgeName(planetName, age) {
     let ageinSec =  age * 31557600
     let planetYear = planets[planetName]
     let personAgeOnPlanet = planetYear * ageinSec / 31557600
