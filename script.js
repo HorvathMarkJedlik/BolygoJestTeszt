@@ -1,5 +1,4 @@
-
-planets = {
+const planets = {
     mercury: 0.2408467,
     venus: 0.61519726,
     earth: 1,
@@ -10,14 +9,25 @@ planets = {
     neptune: 164.79132
 };
 
-
 module.exports = function PlanetAgeName(planetName, age) {
-    let ageinSec =  age * 31557600
-    let planetYear = planets[planetName]
-    let personAgeOnPlanet = planetYear * ageinSec / 31557600
+    if (typeof planetName !== 'string') {
+        throw new Error("Csak betűket adhatsz meg!");
+    }
+    if (!Number.isInteger(age)) {
+        throw new Error("Nem egész számot adtál meg!");
+    }
+
+
+    planetName = planetName.toLowerCase();
+
+
+    if (!planets.hasOwnProperty(planetName)) {
+        throw new Error("Nem létező bolygó!");
+    }
+
+    let ageinSec = age * 31557600; 
+    let planetYear = planets[planetName]; 
+    let personAgeOnPlanet = ageinSec / (planetYear * 31557600); 
 
     return personAgeOnPlanet;
-
 }
-
-
