@@ -10,6 +10,7 @@ const planets = {
 };
 
 module.exports = function PlanetAgeName(planetName, age) {
+
     if (typeof planetName !== 'string') {
         throw new Error("Csak betűket adhatsz meg!");
     }
@@ -17,13 +18,11 @@ module.exports = function PlanetAgeName(planetName, age) {
         throw new Error("Nem egész számot adtál meg!");
     }
 
-
-    planetName = planetName.toLowerCase();
-
-
     if (!planets.hasOwnProperty(planetName)) {
         throw new Error("Nem létező bolygó!");
     }
+
+    planetName = planetName.toLowerCase();
 
     let ageinSec = age * 31557600; 
     let planetYear = planets[planetName]; 
